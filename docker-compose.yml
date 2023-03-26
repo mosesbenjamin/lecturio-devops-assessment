@@ -1,0 +1,101 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ./dev
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=rootpassword
+      - MYSQL_DATABASE=testdb
+      - MONGO_HOST=mongo
+    volumes:
+      - ./dev/src:/var/www/html
+    depends_on:
+      - mysql
+      - mongo
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=testdb
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    # volumes:
+    #   - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+  # mongo:
+  #   image: mongo
+  #   restart: always
+  #   ports:
+  #     - "27017:27017"
+  #   # environment:
+  #   #   - MONGO_INITDB_ROOT_USERNAME=root
+  #   #   - MONGO_INITDB_ROOT_PASSWORD=rootpassword
+  #   #   - MONGO_INITDB_DATABASE=testdb
+  #   # volumes:
+  #   #   - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+
+
+# version: '3'
+# services:
+#   web:
+#     build:
+#       context: ./dev
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8080:80"
+#     volumes:
+#       - ./src:/var/www/html/public
+
+#     depends_on:
+#       # - mysql
+#       - mongodb
+
+#   # mysql:
+#   #   image: mysql:5.7
+#   #   environment:
+#   #     MYSQL_ROOT_PASSWORD: password
+#   #     MYSQL_DATABASE: mydatabase
+
+#   mongodb:
+#     image: mongo:4.4
+    
+# version: "3.9"
+
+# services:
+#   dev:
+#     build:
+#       context: ./dev
+#     ports:
+#       - "8080:80"
+#     volumes:
+#       - ./src:/var/www/html
+#     environment:
+#       - PHP_IDE_CONFIG=serverName=localhost
+#     networks:
+#       - mynet
+
+#   prod:
+#     build:
+#       context: ./prod
+#     ports:
+#       - "8081:80"
+#     volumes:
+#       - ./src:/var/www/html
+#     networks:
+#       - mynet
+
+# networks:
+#   mynet:
