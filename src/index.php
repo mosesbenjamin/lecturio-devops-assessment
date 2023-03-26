@@ -7,6 +7,9 @@
     <h1>Setup containerised system using Docker</h1>
     <?php
 
+    $phpEnv = getenv('PHP_ENV');
+    echo '<h3>Running ' . $phpEnv . ' version of build.</h3>';
+
     /////////////////// MYSQL //////////////////////   
     // Get env vars
     $mysqlDbHost = getenv('MYSQL_HOST');

@@ -9,16 +9,17 @@ services:
         ENVIRONMENT: ${ENVIRONMENT} # customise build for either dev or prod
     ports:
       - "8080:80"
-    env_file: .env # load values from .env file
-    # environment:
-    #   - MYSQL_HOST=mysql
-    #   - MYSQL_USER=root
-    #   - MYSQL_PASSWORD=rootpassword
-    #   - MYSQL_DATABASE=testdb
-    #   - MONGO_HOST=mongo
-    #   - MONGO_USER=root
-    #   - MONGO_PASSWORD=rootpassword
-    #   - MONGO_DATABASE=test-mongo-db
+    # env_file: .env # load values from .env file
+    environment:
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MONGO_HOST=${MONGO_HOST}
+      - MONGO_USER=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_DATABASE=${MONGO_DATABASE}
+      - PHP_ENV=${ENVIRONMENT}
     volumes:
       - ./src:/var/www/html  # map host to container volume
     depends_on:
@@ -28,12 +29,12 @@ services:
   mysql:
     image: mysql:8.0
     environment:
-      - MYSQL_ROOT_PASSWORD=rootpassword
-      - MYSQL_DATABASE=testdb
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
 
   mongo:
     image: mongo
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
