@@ -9,7 +9,7 @@ services:
         ENVIRONMENT: ${ENVIRONMENT} # customise build for either dev or prod
     ports:
       - "8080:80"
-    env_file: .env # load values from env vars
+    env_file: .env # load values from .env file
     # environment:
     #   - MYSQL_HOST=mysql
     #   - MYSQL_USER=root
