@@ -14,15 +14,15 @@ dev:
 	docker compose up --build
 
 win_dev:
-    $env:MYSQL_HOST="mysql"; `
+	$env:MYSQL_HOST="mysql"; `
 	$env:MYSQL_USER="root"; `
 	$env:MYSQL_DATABASE="testdb"; `
 	$env:MYSQL_ROOT_PASSWORD="rootpassword"; `
 	$env:MONGO_HOST="mongo"; `
 	$env:MONGO_DATABASE="test-mongo-db"; `
-    $env:MONGO_INITDB_ROOT_USERNAME="root"; `
-    $env:MONGO_INITDB_ROOT_PASSWORD="rootpassword"; `
-    $env:ENVIRONMENT="dev"; `
+	$env:MONGO_INITDB_ROOT_USERNAME="root"; `
+	$env:MONGO_INITDB_ROOT_PASSWORD="rootpassword"; `
+	$env:ENVIRONMENT="dev"; `
 	docker compose up --build
 	
 
@@ -40,15 +40,15 @@ prod:
 	docker compose up --build
 
 win_prod:
-    $env:MYSQL_HOST="mysql"; `
+	$env:MYSQL_HOST="mysql"; `
 	$env:MYSQL_USER="root"; `
 	$env:MYSQL_DATABASE="testdb"; `
 	$env:MYSQL_ROOT_PASSWORD="rootpassword"; `
 	$env:MONGO_HOST="mongo"; `
 	$env:MONGO_DATABASE="test-mongo-db"; `
-    $env:MONGO_INITDB_ROOT_USERNAME="root"; `
-    $env:MONGO_INITDB_ROOT_PASSWORD="rootpassword"; `
-    $env:ENVIRONMENT="prod"; `
+	$env:MONGO_INITDB_ROOT_USERNAME="root"; `
+	$env:MONGO_INITDB_ROOT_PASSWORD="rootpassword"; `
+	$env:ENVIRONMENT="prod"; `
 	docker compose up --build
 
 # clean up
@@ -62,10 +62,10 @@ destroy:
 	unset MONGO_INITDB_ROOT_USERNAME && \
 	unset MONGO_INITDB_ROOT_PASSWORD && \
 	unset ENVIRONMENT && \
-    docker compose down
+	docker compose down
 
 win_destroy: 
-    Remove-Item Env:\MYSQL_HOST; `
+	Remove-Item Env:\MYSQL_HOST; `
 	Remove-Item Env:\MYSQL_USER; `
 	Remove-Item Env:\MYSQL_DATABASE; `
 	Remove-Item Env:\MYSQL_ROOT_PASSWORD; `
@@ -75,3 +75,4 @@ win_destroy:
 	Remove-Item Env:\MONGO_INITDB_ROOT_PASSWORD; `
 	Remove-Item Env:\ENVIRONMENT; `
 	docker compose down
+	
