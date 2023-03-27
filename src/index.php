@@ -28,7 +28,7 @@
     // Drop if already exists
     $sql = "DROP DATABASE IF EXISTS $mysqlDbName";
     if ($mysqli->query($sql) === false) {
-        die("Error creating database: " . $mysqli->error);
+        die("Error dropping database: " . $mysqli->error);
     }
 
     // Create the database
@@ -117,8 +117,6 @@
         echo '<td>' . $row->age . '</td>';
         echo '</tr>';
     }
-
-    // Close the table
     echo '</table>';
 
     // Remove the seeded data
