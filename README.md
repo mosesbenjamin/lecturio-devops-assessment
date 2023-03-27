@@ -150,4 +150,8 @@ create a .env file with values matching this [.env.example](.env.example) file, 
 
 ### 2. Infrastructure Layout
 
-(WIP)
+Highly available, self-recovering cloud infra based on AWS that features a web frontend, api backend, and RDBMS
+
+![infra layout](assets/lecturio-infra-layout-task.png)
+
+[Pdf](assets/lecturio-infra-layout-task.pdf), [Lucid chart](https://lucid.app/lucidchart/cb5f0057-3f73-4bb8-bde4-aaf479821184/edit?viewport_loc=-2439%2C-231%2C5084%2C2106%2C0_0&invitationId=inv_951929c1-5caf-4199-acb8-c00ba2533506)
